@@ -27,7 +27,13 @@ async function updatePost(postId) {
 export function PostDetail({ post }) {
   const { data, isLoading, isError, error } = useQuery(
     ["comments", post.id],
-    () => fetchComments(post.id)
+    () => fetchComments(post.id),
+    {
+      select: (data) => {
+        console.log(data, "<<<");
+        return data;
+      },
+    }
   );
 
   const deleteMutation = useMutation((postId) => deletePost(postId));

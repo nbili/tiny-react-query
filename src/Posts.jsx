@@ -31,15 +31,10 @@ export function Posts() {
 
   const { data, isError, isLoading, isFetching, error } = useQuery(
     ["posts", currentPage],
-    () => fetchPosts(currentPage),
-    {
-      staleTime: 2000,
-      refetchOnWindowFocus: false,
-      keepPreviousData: true,
-    }
+    () => fetchPosts(currentPage)
   );
 
-  if (isFetching) return <h1>Fetching ...</h1>;
+  if (isLoading) return <h1>Fetching ...</h1>;
 
   if (isError) return <h2>Oops {error.toString()}</h2>;
 

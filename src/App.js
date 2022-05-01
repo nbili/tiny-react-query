@@ -12,7 +12,11 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       onError: queryErrorHandler,
-      refetchOnWindowFocus: false
+      staleTime: 60000, // 10 minutes
+      cacheTime: 90000, // 15 minutes
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      refetchOnReconnect: false,
     },
   },
 });
