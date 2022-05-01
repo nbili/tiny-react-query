@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useQuery, useQueryClient, useMutation } from "react-query";
+import { Loading } from "./Loading";
 
 import { PostDetail } from "./PostDetail";
 
@@ -44,6 +45,7 @@ export function Posts() {
 
   return (
     <>
+      <Loading />
       <ul>
         {data.map((post) => (
           <li
