@@ -31,7 +31,12 @@ export function Posts() {
 
   const { data, isError, isLoading, isFetching, error } = useQuery(
     ["posts", currentPage],
-    () => fetchPosts(currentPage)
+    () => fetchPosts(currentPage),
+    {
+      onSuccess() {
+        console.log(`success ...`);
+      },
+    }
   );
 
   if (isLoading) return <h1>Fetching ...</h1>;
