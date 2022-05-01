@@ -4,7 +4,18 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import "./App.css";
 import { Posts } from "./Posts";
 
-const queryClient = new QueryClient();
+const queryErrorHandler = () => {
+  console.log(`error handler`);
+};
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      onError: queryErrorHandler,
+      refetchOnWindowFocus: false
+    },
+  },
+});
 
 function App() {
   return (
